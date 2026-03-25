@@ -39,9 +39,6 @@ Thumbs.db
 # Logs
 *.log
 
-# Environment variables
-.env
-
 # Data files
 data/
 *.db
