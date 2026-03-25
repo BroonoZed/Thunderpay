@@ -186,21 +186,13 @@ async def handle_unmatched_order(update: Update, context: ContextTypes.DEFAULT_T
     error_msg = (
         f"❌ **Order Query Failed**\n\n"
         f"📋 Order Number: `{order_number}`\n"
-        f"🔍 No matching record found in database\n\n"
+        f"🔍 No matching record found in database"
     )
     
     if suggestions:
-        error_msg += "🤔 Did you mean:\n"
+        error_msg += "\n\n🤔 Did you mean:\n"
         for sugg in suggestions[:3]:
             error_msg += f"   • `{sugg['order_number']}` ({get_status_text(sugg['status'])})\n"
-        error_msg += "\n"
-    
-    error_msg += (
-        "Please check:\n"
-        "   1️⃣ Is the order number correct?\n"
-        "   2️⃣ Is the order already in the system?\n"
-        "   3️⃣ Contact admin to add the order"
-    )
     
     await message.reply_text(error_msg, parse_mode='Markdown')
 
